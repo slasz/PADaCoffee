@@ -1,0 +1,54 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content class="post-size-14px">
+    <ion-nav-bar class="bar bar-balanced">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+        
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-content>
+      <ion-list>
+        <ion-item class="heading-item item item-avatar item-balanced" nav-clear menu-close ui-sref="app.profile">
+          <img ng-src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg">
+          <h2 class="greeting light">Hi Brynn</h2>
+          <p class="message light">Welcome back</p>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">
+          <i class="icon ion-person"></i>
+          <h2 class="menu-text">Account</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">
+          <i class="icon ion-ios-list"></i>
+          <h2 class="menu-text">Historical Orders</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">
+          <i class="icon ion-share"></i>
+          <h2 class="menu-text">Share App</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">
+          <i class="icon ion-ios-telephone"></i>
+          <h2 class="menu-text">Contact Us</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.settings">
+          <i class="icon ion-gear-a"></i>
+          <h2 class="menu-text">Settings</h2>
+        </ion-item>
+        <ion-item class="item-divider">
+          <h2 class="menu-text">Other</h2>
+        </ion-item>
+        <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.settings">
+          <i class="icon ion-log-out"></i>
+          <h2 class="menu-text">Logout</h2>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
