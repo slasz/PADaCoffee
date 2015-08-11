@@ -63,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/home',
       views: {
         'menuContent': {
-          templateUrl: 'templates/home0.html',
+          templateUrl: 'templates/home.html',
           controller: 'PlaylistsCtrl'
         }
       }
