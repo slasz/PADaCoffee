@@ -1,82 +1,17 @@
-<ion-view view-title="">
-  <ion-content>
-    <ion-slide-box auto-play="true" does-continue="true">
-      <ion-slide>
+<ion-view view-title="" cache-view="true">
+  <ion-content has-bouncing="false">
+    <ion-slide-box auto-play="true" does-continue="true" delegate-handle="true">
+      <ion-slide ng-repeat="showPromo in requestPromo">
         <div class="item item-image">
-          <img ng-src="http://lorempixel.com/300/100/food?v=50">
-        </div>
-      </ion-slide>
-      <ion-slide>
-        <div class="item item-image">
-          <img ng-src="http://lorempixel.com/300/100/food?v=51">
-        </div>
-      </ion-slide>
-      <ion-slide>
-        <div class="item item-image">
-          <img ng-src="http://lorempixel.com/300/100/food?v=52">
+          <img ng-src="{{ serviceApi }}upload/gambar/{{ showPromo.promo_img }}">
         </div>
       </ion-slide>
     </ion-slide-box>
 
-    <div class="list card">
-      <div class="item item-image">
-        <img src="http://lorempixel.com/200/100/food/?v=15">
+    <div class="list card" ng-repeat="showCategory in requestCategory">
+      <div class="item item-image" ui-sref="app.menu({category:showCategory.category_id,title:showCategory.category_name})">
+        <img ng-src="{{ serviceApi }}upload/gambar/{{ showCategory.category_img }}">
       </div>
     </div>
-    <div class="list card">
-      <div class="item item-image">
-        <img src="http://lorempixel.com/200/100/food/?v=16">
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-image">
-        <img src="http://lorempixel.com/200/100/food/?v=17">
-        <div class="read-more col col-center col-33" Align="right">
-          <a ui-sref="" class="button button-small button-block button-assertive">
-            Read more
-          </a>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="list card">
-
-      <div class="item item-avatar">
-        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg">
-        <h2>Pretty Hate Machine</h2>
-        <p>Nine Inch Nails</p>
-      </div>
-
-      <div class="item item-image">
-        <img src="http://lorempixel.com/200/150/food/?v=30">
-      </div>
-
-      <a class="item item-icon-left assertive" href="#">
-        <i class="icon ion-bag"></i>
-        Order Now
-      </a>
-
-    </div>
-
-    <div class="list card">
-
-      <div class="item item-avatar">
-        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg">
-        <h2>Pretty Hate Machine</h2>
-        <p>Nine Inch Nails</p>
-      </div>
-
-      <div class="item item-image">
-        <img src="http://lorempixel.com/200/150/food/?v=31">
-      </div>
-
-      <a class="item item-icon-left assertive" href="#">
-        <i class="icon ion-bag"></i>
-        Order Now
-      </a>
-
-    </div>
-
   </ion-content>
 </ion-view>

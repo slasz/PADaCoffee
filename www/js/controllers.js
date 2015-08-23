@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+//angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+mobileApp.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -41,7 +41,43 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
+mobileApp.controller('HomeCtrl', function($scope,appService,$ionicSlideBoxDelegate) {
+  $scope.serviceApi		= serviceApi;
+  $scope.GetServiceApi	= GetServiceApi;
+
+  setTimeout(function(){
+      $ionicSlideBoxDelegate.update();
+  },1000);
+
+  appService.HttpRequest('GET',GetServiceApi+'service/get_promo?token='+token).success(function(data) {
+    $scope.requestPromo = data;
+  });
+
+  appService.HttpRequest('GET',GetServiceApi+'service/get_category?token='+token).success(function(data) {
+		$scope.requestCategory = data;
+    });
+})
+
+
+mobileApp.controller('MenuCtrl', function($scope, $rootScope,appService,$state, $stateParams) {
+  $scope.serviceApi		= serviceApi;
+  $scope.GetServiceApi	= GetServiceApi;
+
+  $rootScope.itemcategory = $stateParams.category;
+
+  console.log('category:' + $stateParams.category);
+  console.log('title:' + $stateParams.title);
+  var requestParams = {
+        "token": token,
+        "category": $rootScope.itemcategory
+    };
+
+  appService.HttpRequest('POST',GetServiceApi+'service/get_menu/', requestParams).success(function(data) {
+    $scope.requestData = data;
+    });
+})
+
+mobileApp.controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -52,5 +88,5 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+mobileApp.controller('PlaylistCtrl', function($scope, $stateParams) {
 });

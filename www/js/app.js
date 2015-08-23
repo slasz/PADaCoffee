@@ -4,9 +4,15 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+var mobileApp = angular.module('starter', ['ngRoute','ionic','pascalprecht.translate'])
 
-.run(function($ionicPlatform) {
+//Set your token database
+var token			= 'a8B6c4D4e8F0';
+//Set url service app
+var serviceApi		= 'http://pada.slasz.com/admin/';
+var GetServiceApi	= serviceApi+'index.php/';
+
+mobileApp.run(function($ionicPlatform,$rootScope,appService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,9 +26,29 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       StatusBar.styleDefault();
     }
   });
-})
+});
 
-.config(function($stateProvider, $urlRouterProvider) {
+
+mobileApp.config(['$translateProvider', function($translateProvider){
+	// Register a loader for the static files
+	// So, the module will search missing translation tables under the specified urls.
+	// Those urls are [prefix][langKey][suffix].
+	$translateProvider.useStaticFilesLoader({
+		prefix: 'l10n/',
+		suffix: '.json'
+	});
+	// Tell the module what language to use by default
+	$translateProvider.preferredLanguage('th_TH');
+}])
+
+.controller('ctrl', ['$scope', '$translate', function($scope, $translate) {
+	$scope.setLang = function(langKey) {
+		// You can change the language during runtime
+		$translate.use(langKey);
+	};
+}]);
+
+mobileApp.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
     .state('app', {
@@ -64,7 +90,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/home.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'HomeCtrl'
+        }
+      }
+    })
+
+    .state('app.menu', {
+      url: '/menu/:category/:title',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/category_detail.html',
+          controller: 'MenuCtrl'
         }
       }
     })

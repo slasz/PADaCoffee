@@ -1,0 +1,11 @@
+<ion-view view-title="">
+  <ion-content has-bouncing="false">
+    
+    <div class="list card" ng-repeat="showData in requestData">
+      <div class="item item-image" ui-sref="app.menu()">
+        <img ng-src="{{ serviceApi }}upload/gambar/{{ showData.menu_img }}">
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
