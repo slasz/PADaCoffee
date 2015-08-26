@@ -3,14 +3,14 @@
     <ion-slide-box auto-play="true" does-continue="true" delegate-handle="true">
       <ion-slide ng-repeat="showPromo in requestPromo">
         <div class="item item-image">
-          <img ng-src="{{ serviceApi }}upload/gambar/{{ showPromo.promo_img }}">
-        </div>
+          <img width="300" height="150" image-lazy-src="{{ serviceApi }}upload/gambar/{{ showPromo.promo_img }}" image-lazy-loader="spiral">
+          </div>
       </ion-slide>
     </ion-slide-box>
 
     <div class="list card" ng-repeat="showCategory in requestCategory">
       <div class="item item-image" ui-sref="app.menu({category:showCategory.category_id,title:showCategory.category_name})">
-        <img ng-src="{{ serviceApi }}upload/gambar/{{ showCategory.category_img }}">
+        <img width="300" height="150" image-lazy-src="{{ serviceApi }}upload/gambar/{{ showCategory.category_img }}" image-lazy-loader="spiral">
       </div>
     </div>
   </ion-content>
